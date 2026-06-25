@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>重要讲话 · 公考备考</title><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{colors:{primary:'#1677ff',pLight:'#e6f4ff'}}}}</script>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f7}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:2px}
+#detailPage::-webkit-scrollbar{display:none}#newsList::-webkit-scrollbar{display:none}
+.tab-active{background:#1677ff!important;color:#fff!important;border-color:#1677ff!important}
+.tab-active-card{background:linear-gradient(135deg,#1677ff,#4f8fff)!important;color:#fff!important;border-color:#1677ff!important;box-shadow:0 4px 16px rgba(22,119,255,.25)!important}
+.card-hover{transition:all .2s ease}
+.card-hover:hover{background:#f8faff;transform:translateX(2px);box-shadow:inset 3px 0 0 #1677ff}
+.fade-in{animation:fadeIn .3s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+</style></head><body class="min-h-screen">
+
+<!-- ====== 列表页 ====== -->
+<div id="listPage" >
+  <div class="max-w-5xl mx-auto px-6 py-6 h-full">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-5">
+      <div><h1 class="text-xl font-extrabold tracking-tight flex items-center gap-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1677ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="6" y1="7" x2="18" y2="7"/><line x1="6" y1="11" x2="18" y2="11"/><line x1="6" y1="15" x2="10" y2="15"/></svg>重要讲话</h1><p class="text-xs text-gray-400 mt-1">公考讲话热点 · 考点式解读</p></div>
+          </div>
+
+    <!-- Time tabs -->
+    <div class="flex gap-2 mb-5" id="timeTabs">
+      <div class="px-5 py-2.5 rounded-xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md bg-white border border-gray-200 text-gray-500 text-sm font-bold flex items-center gap-2" data-time="today" onclick="filterTime('today',this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>今天</div>
+      <div class="px-5 py-2.5 rounded-xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md bg-white border border-gray-200 text-gray-500 text-sm font-bold flex items-center gap-2" data-time="3day" onclick="filterTime('3day',this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/></svg>近三天</div>
+      <div class="px-5 py-2.5 rounded-xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md tab-active-card text-sm font-bold flex items-center gap-2" data-time="7day" onclick="filterTime('7day',this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 14 12 17 16 14"/></svg>近七天</div>
+      <div class="px-5 py-2.5 rounded-xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md bg-white border border-gray-200 text-gray-500 text-sm font-bold flex items-center gap-2" data-time="30day" onclick="filterTime('30day',this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="16" r="2"/></svg>近一个月</div>
+    </div>
+
+    <!-- Category tabs -->
+    <div class="grid grid-cols-4 gap-3 mb-5" id="catTabs">
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg tab-active-card flex items-center gap-3" data-cat="all" onclick="filterCat('all',this)"><div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div class="text-sm font-bold">全部</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="新年讲话" onclick="filterCat('新年讲话',this)"><div class="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="text-sm font-bold">新年讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="外交讲话" onclick="filterCat('外交讲话',this)"><div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="text-sm font-bold">外交讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="党建讲话" onclick="filterCat('党建讲话',this)"><div class="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div><div class="text-sm font-bold">党建讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="经济讲话" onclick="filterCat('经济讲话',this)"><div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div class="text-sm font-bold">经济讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="民生讲话" onclick="filterCat('民生讲话',this)"><div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="text-sm font-bold">民生讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="法治讲话" onclick="filterCat('法治讲话',this)"><div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div class="text-sm font-bold">法治讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="生态讲话" onclick="filterCat('生态讲话',this)"><div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="text-sm font-bold">生态讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="军队讲话" onclick="filterCat('军队讲话',this)"><div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div class="text-sm font-bold">军队讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="文化讲话" onclick="filterCat('文化讲话',this)"><div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="text-sm font-bold">文化讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="青年讲话" onclick="filterCat('青年讲话',this)"><div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="text-sm font-bold">青年讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="改革开放讲话" onclick="filterCat('改革开放讲话',this)"><div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><div class="text-sm font-bold">改革开放讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 text-gray-500 flex items-center gap-3" data-cat="主题教育讲话" onclick="filterCat('主题教育讲话',this)"><div class="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div><div class="text-sm font-bold">主题教育讲话</div></div>
+      <div class="rounded-2xl p-4 border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-white border-yellow-200 text-yellow-600 flex items-center gap-3" data-cat="fav" onclick="filterCat('fav',this)"><div class="w-10 h-10 rounded-xl bg-yellow-100 text-yellow-500 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="text-sm font-bold">收藏</div></div>
+    </div>
+
+    <!-- Count -->
+    <p class="text-xs text-gray-400 mb-3" id="listCount">共 14 条讲话</p>
+
+    <!-- List -->
+    <div id="newsList" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden" style="height:52vh;overflow-y:auto;-ms-overflow-style:none;scrollbar-width:none"></div>
+
+    <!-- Pagination -->
+    <div class="flex items-center justify-center gap-4 mt-4" id="pagination">
+      <button class="px-5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-bold text-gray-500 transition-all duration-200 hover:border-primary hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed" onclick="goPage(-1)" id="btnPrev">&lt; 上一页</button>
+      <span class="text-sm font-bold text-gray-700" id="pageInfo">1 / 1</span>
+      <button class="px-5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-bold text-gray-500 transition-all duration-200 hover:border-primary hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed" onclick="goPage(1)" id="btnNext">下一页 &gt;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 详情页 ====== -->
+<div id="detailPage" class="hidden" style="height:80vh;overflow:hidden">
+  <div class="max-w-5xl mx-auto px-6 py-6 h-full overflow-y-auto" style="-ms-overflow-style:none;scrollbar-width:none">
+    <!-- Nav -->
+    <div class="flex items-center gap-4 mb-6">
+      <button onclick="backToList()" class="flex items-center gap-1 text-sm font-semibold text-gray-500 hover:text-primary transition"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>返回</button>
+      <div class="flex-1"><h1 class="text-lg font-extrabold" id="detailTitle"></h1></div>
+      <div class="flex items-center gap-3 text-xs text-gray-400"><span id="detailSource"></span><span class="bg-gray-100 px-2 py-1 rounded text-xs" id="detailCat"></span></div>
+    </div>
+
+    <!-- 考点式摘要 -->
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-7 mb-6 fade-in border border-blue-100">
+      <div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-xl bg-blue-500 flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3 class="text-base font-bold text-blue-700">考点式摘要</h3></div><span class="text-2xl cursor-pointer transition hover:scale-125 text-yellow-500" id="detailStar" onclick="toggleStar()">☆</span></div>
+      <p class="text-lg leading-relaxed text-gray-700" id="detailSummary"></p>
+      <p class="text-sm text-blue-500 mt-4 font-medium" id="detailSourceLink"></p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-3 mb-5" id="detailTabs">
+      <button class="flex-1 py-3.5 rounded-2xl font-bold transition-all duration-200 tab-active shadow-md flex items-center justify-center gap-2" style="background:#1677ff;color:#fff" data-dtab="exam" onclick="switchDetailTab('exam',this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>必备考点表</button>
+      <button class="flex-1 py-3.5 rounded-2xl font-bold transition-all duration-200 bg-white border-2 border-gray-200 text-gray-500 flex items-center justify-center gap-2 hover:border-green-500 hover:text-green-500" data-dtab="shenlun" onclick="switchDetailTab('shenlun',this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>申论素材卡</button>
+      <button class="flex-1 py-3.5 rounded-2xl font-bold transition-all duration-200 bg-white border-2 border-gray-200 text-gray-500 flex items-center justify-center gap-2 hover:border-purple-500 hover:text-purple-500" data-dtab="words" onclick="switchDetailTab('words',this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>高频实词</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="tabExam" class="fade-in">
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <table class="w-full">
+          <thead><tr class="bg-slate-500"><th class="px-6 py-5 text-left font-bold text-base text-white">必备考点</th><th class="px-6 py-5 text-left font-bold text-base text-white">会怎么考</th><th class="px-6 py-5 text-left font-bold text-base text-white">容易错在哪</th><th class="px-6 py-5 text-left font-bold text-base text-white">速记</th></tr></thead>
+          <tbody id="tabExamBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="tabShenlun" class="hidden fade-in">
+      <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100 p-6"><div class="flex items-center gap-2 mb-3"><div class="w-7 h-7 rounded-lg bg-green-500 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3 class="text-sm font-bold text-green-700">申论素材卡</h3></div><p class="text-base leading-relaxed text-gray-700" id="tabShenlunContent"></p></div>
+    </div>
+    <div id="tabWords" class="hidden fade-in">
+      <div class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl border border-purple-100 p-6"><div class="flex items-center gap-2 mb-3"><div class="w-7 h-7 rounded-lg bg-purple-500 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div><h3 class="text-sm font-bold text-purple-700">高频实词</h3></div><div class="flex flex-wrap gap-2" id="tabWordsContent"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Drawer -->
+<div class="fixed inset-0 bg-black/10 z-[250] hidden" id="drawerOverlay" onclick="toggleDrawer()"></div>
+<div class="fixed left-[-200px] top-0 bottom-0 w-[180px] z-[260] bg-[#f5f5f7] border-r border-gray-100 flex flex-col gap-2.5 px-4 py-20 transition-all duration-300 shadow-lg" id="drawerPanel">
+  <div class="absolute -right-[44px] top-1/2 -translate-y-1/2 bg-white rounded-r-xl py-3 px-2 cursor-pointer shadow-md border border-l-0 flex flex-col gap-1 z-[261]" onclick="toggleDrawer()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+  <a href="https://thanhtientt51-commits.github.io/jiangsu-jobs-2026/" class="block py-3 px-3.5 rounded-xl bg-white border text-sm font-bold text-center no-underline transition hover:-translate-y-0.5 hover:border-primary">筛岗</a>
+  <a href="https://thanhtientt51-commits.github.io/mock-interview/" class="block py-3 px-3.5 rounded-xl bg-white border text-sm font-bold text-center no-underline transition hover:-translate-y-0.5 hover:border-primary">面试</a>
+  <a href="https://thanhtientt51-commits.github.io/xct/" class="block py-3 px-3.5 rounded-xl bg-white border text-sm font-bold text-center no-underline transition hover:-translate-y-0.5 hover:border-primary">行测</a>
+  <a href="https://thanhtientt51-commits.github.io/sl-practice/" class="block py-3 px-3.5 rounded-xl bg-white border text-sm font-bold text-center no-underline transition hover:-translate-y-0.5 hover:border-primary">申论</a>
+  <a href="https://thanhtientt51-commits.github.io/shenlunguifanciyu/" class="block py-3 px-3.5 rounded-xl bg-white border text-sm font-bold text-center no-underline transition hover:-translate-y-0.5 hover:border-primary">规范词</a>
+  <a href="https://thanhtientt51-commits.github.io/idiom-practice/" class="block py-3 px-3.5 rounded-xl bg-white border text-sm font-bold text-center no-underline transition hover:-translate-y-0.5 hover:border-primary">成语</a>
+</div>
+
+<script>
+var drawerOpen=false;function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('drawerPanel').style.left=drawerOpen?'0':'-200px';document.getElementById('drawerOverlay').style.display=drawerOpen?'block':'none'}
+
+// ====== DATA ======
+
+var newsData=[
+  {id:1,title:"习近平发表二〇二七年新年贺词",cat:"新年讲话",time:"2027-01-01",source:"新华社",star:!1,
+    summary:"新年前夕，国家主席习近平通过中央广播电视总台和互联网，发表二〇二七年新年贺词。贺词回顾了过去一年的发展成就，展望了新一年的奋斗目标，号召全党全国各族人民团结奋斗，以中国式现代化全面推进中华民族伟大复兴。",
+    sourceLink:"来源：新华社 2027-01-01",
+    exam:[
+      {point:"新年贺词的核心精神",test:"常识判断：习近平新年贺词通常体现什么精神？",trap:"注意区分不同年份贺词的重点差异，不要死记硬背。",mem:"团结奋斗·中国式现代化·民族复兴"},
+      {point:"年度发展成就概括",test:"片段阅读/申论素材：贺词中对过去一年的总结可作论据。",trap:"不要夸大或缩小成就，要准确把握原文措辞。",mem:"经济发展·科技创新·民生改善"},
+    ],
+    shenlun:"可用于'奋斗精神''中国式现代化'等申论话题。引用：'正如习近平主席在新年贺词中所说，团结奋斗是中国人民创造历史伟业的必由之路。'",
+    words:[{w:"中国式现代化",d:"中国共产党领导的社会主义现代化"},{w:"团结奋斗",d:"全党全国各族人民同心协力共同奋斗"}]},
+  {id:2,title:"习近平出席上海合作组织成员国元首理事会并发表重要讲话",cat:"外交讲话",time:"2026-09-16",source:"新华社",star:!1,
+    summary:"习近平主席出席上海合作组织撒马尔罕峰会并发表重要讲话，强调要弘扬'上海精神'，构建更加紧密的上海合作组织命运共同体。提出深化政治互信、加强安全合作、推动共同发展、促进民心相通等倡议。",
+    sourceLink:"来源：新华社 2026-09-16",
+    exam:[
+      {point:"上海合作组织的核心理念",test:"常识判断：上合组织遵循的精神是什么？",trap:"注意与'和平共处五项原则'区分，上合强调'上海精神'。",mem:"上海精神·命运共同体·政治互信"},
+      {point:"中国外交的全球治理观",test:"申论/面试：如何理解构建人类命运共同体？",trap:"不能只讲合作不讲斗争，要在坚持原则基础上推动合作。",mem:"共商共建共享·多边主义·合作共赢"},
+    ],
+    shenlun:"适用于'对外开放''国际关系'话题。引用：'习近平主席强调要弘扬上海精神，推动构建更加紧密的命运共同体，体现了中国对多边主义的坚定支持。'",
+    words:[{w:"上海精神",d:"互信互利平等协商尊重多样文明谋求共同发展"},{w:"命运共同体",d:"各国命运紧密相连休戚与共"}]},
+  {id:3,title:"习近平在中央党校中青年干部培训班开班式上发表重要讲话",cat:"党建讲话",time:"2026-09-01",source:"新华社",star:!1,
+    summary:"习近平总书记强调，年轻干部是党和国家事业发展的希望，必须筑牢理想信念根基，守住拒腐防变防线，树立和践行正确政绩观，练就过硬本领，发扬担当和斗争精神，在新时代新征程上留下无悔的奋斗足迹。",
+    sourceLink:"来源：新华社 2026-09-01",
+    exam:[
+      {point:"年轻干部的能力要求",test:"面试/申论：新时代年轻干部应具备哪些素质？",trap:"不能只答理想信念忽视实践能力，需两者并重。",mem:"理想信念·过硬本领·担当斗争"},
+    ],
+    shenlun:"适用于'干部培养''党的建设'话题。引用：'习近平总书记要求年轻干部筑牢理想信念根基，这为新时代干部成长指明了方向。'",
+    words:[{w:"理想信念",d:"对马克思主义的信仰和社会主义共产主义的信念"},{w:"政绩观",d:"对工作业绩和成就的根本看法和态度"}]},
+  {id:4,title:"习近平在中央经济工作会议上发表重要讲话",cat:"经济讲话",time:"2026-06-20",source:"新华社",star:!1,
+    summary:"习近平总书记总结2026年经济工作，分析当前经济形势，部署2027年经济工作。强调坚持稳中求进工作总基调，加快构建新发展格局，着力推动高质量发展，全面深化改革开放，大力提振市场信心。",
+    sourceLink:"来源：新华社 2026-06-20",
+    exam:[
+      {point:"经济工作的总基调",test:"常识判断：中央经济工作会议强调的主基调？",trap:"注意区分'稳中求进'与'高质量发展'的不同层次。",mem:"稳中求进·新发展理念·高质量发展"},
+    ],
+    shenlun:"适用于'经济发展'话题。引用：'中央经济工作会议强调要坚持稳中求进工作总基调，为全年经济工作定下了总基调。'",
+    words:[{w:"稳中求进",d:"在保持稳定的基础上谋求进步和发展"},{w:"新发展格局",d:"以国内大循环为主体国内国际双循环相互促进"}]},
+  {id:5,title:"习近平春节前夕赴基层看望慰问各族干部群众",cat:"民生讲话",time:"2026-01-25",source:"新华社",star:!1,
+    summary:"春节前夕，习近平总书记赴基层看望慰问各族干部群众，强调要始终坚持以人民为中心的发展思想，用心用情用力解决好群众急难愁盼问题，让人民群众过上更加幸福美好的生活。",
+    sourceLink:"来源：新华社 2026-01-25",
+    exam:[
+      {point:"以人民为中心的发展思想",test:"常识判断/申论：以人民为中心的核心内涵？",trap:"不能只说概念而不联系实际，需结合具体民生领域。",mem:"以人民为中心·急难愁盼·美好生活"},
+    ],
+    shenlun:"适用于'民生''群众路线'话题。引用：'习近平总书记指出要用心用情用力解决好群众急难愁盼问题，这深刻诠释了以人民为中心的发展思想。'",
+    words:[{w:"以人民为中心",d:"把人民利益放在首位的发展理念"},{w:"急难愁盼",d:"群众最着急、最困难、最忧愁、最盼望解决的问题"}]},
+  {id:6,title:"习近平在全面依法治国工作会议上发表重要讲话",cat:"法治讲话",time:"2025-12-06",source:"新华社",star:!1,
+    summary:"习近平总书记强调，要坚持党对全面依法治国的领导，坚持以人民为中心，坚持中国特色社会主义法治道路，在法治轨道上推进国家治理体系和治理能力现代化，为全面建设社会主义现代化国家提供有力法治保障。",
+    sourceLink:"来源：新华社 2025-12-06",
+    exam:[
+      {point:"全面依法治国的基本原则",test:"常识判断：全面依法治国的根本保证是什么？",trap:"区分'党的领导'（根本保证）与'以人民为中心'（根本立场）。",mem:"党的领导·人民中心·中国特色"},
+    ],
+    shenlun:"适用于'法治建设'话题。引用：'习近平总书记指出要在法治轨道上推进国家治理现代化，深刻阐明了法治与治理的内在联系。'",
+    words:[{w:"依法治国",d:"依照宪法和法律治理国家"},{w:"法治轨道",d:"在法律框架内运行和发展"}]},
+  {id:7,title:"习近平在全国生态环境保护大会上发表重要讲话",cat:"生态讲话",time:"2025-11-15",source:"生态环境部",star:!1,
+    summary:"习近平总书记强调要深入贯彻习近平生态文明思想，全面推进美丽中国建设，持续打好蓝天碧水净土保卫战，加快推动发展方式绿色低碳转型，以高品质生态环境支撑高质量发展。",
+    sourceLink:"来源：生态环境部 2025-11-15",
+    exam:[
+      {point:"生态文明建设的核心目标",test:"常识判断：美丽中国建设的核心内涵？",trap:"不能只讲环保不讲发展，需体现绿色发展理念。",mem:"美丽中国·绿色转型·高质量发展"},
+    ],
+    shenlun:"适用于'生态文明'话题。引用：'习近平总书记强调以高品质生态环境支撑高质量发展，揭示了环境保护与经济发展的辩证统一关系。'",
+    words:[{w:"美丽中国",d:"建设生态环境优美的社会主义现代化强国"},{w:"绿色转型",d:"向资源节约和环境友好的发展方式转变"}]},
+  {id:8,title:"习近平出席庆祝建军100周年大会并发表重要讲话",cat:"军队讲话",time:"2027-08-01",source:"解放军报",star:!1,
+    summary:"习近平总书记出席庆祝中国人民解放军建军100周年大会并发表重要讲话，回顾人民军队光辉历程，强调要深入贯彻新时代党的强军思想，坚持党对军队的绝对领导，加快建设世界一流军队。",
+    sourceLink:"来源：解放军报 2027-08-01",
+    exam:[
+      {point:"新时代强军目标",test:"常识判断：新时代党的强军目标是什么？",trap:"区分'听党指挥'（灵魂）与'能打胜仗'（核心）。",mem:"听党指挥·能打胜仗·作风优良"},
+    ],
+    shenlun:"适用于'国防军队建设'话题。引用：'习近平主席强调坚持党对军队的绝对领导，这是人民军队永远不变的军魂。'",
+    words:[{w:"强军目标",d:"建设一支听党指挥能打胜仗作风优良的人民军队"},{w:"党指挥枪",d:"党对军队实行绝对领导的根本原则"}]},
+  {id:9,title:"习近平在文化传承发展座谈会上发表重要讲话",cat:"文化讲话",time:"2026-06-02",source:"新华社",star:!1,
+    summary:"习近平总书记出席文化传承发展座谈会并发表重要讲话，强调要深刻把握中华文明的突出特性，更好担负起新的文化使命，坚定文化自信，坚持守正创新，推动中华优秀传统文化创造性转化和创新性发展。",
+    sourceLink:"来源：新华社 2026-06-02",
+    exam:[
+      {point:"中华文明的突出特性",test:"常识判断：中华文明的突出特性包括哪些？",trap:"不能只背特性名称，需理解其内涵。",mem:"连续性·创新性·统一性·包容性·和平性"},
+    ],
+    shenlun:"适用于'文化自信''文化传承'话题。引用：'习近平总书记指出要推动中华优秀传统文化创造性转化和创新性发展，为新时代文化建设提供了根本遵循。'",
+    words:[{w:"文化自信",d:"对自身文化价值的充分肯定和积极践行"},{w:"守正创新",d:"在坚守正道的基础上开拓创新"}]},
+  {id:10,title:"习近平在纪念五四运动大会上对青年发表重要讲话",cat:"青年讲话",time:"2026-05-04",source:"新华社",star:!1,
+    summary:"习近平总书记寄语新时代青年，强调青年是整个社会力量中最积极、最有生气的力量，要树立远大理想、热爱伟大祖国、担当时代责任、勇于砥砺奋斗、练就过硬本领、锤炼品德修为。",
+    sourceLink:"来源：新华社 2026-05-04",
+    exam:[
+      {point:"新时代青年使命",test:"面试/申论：新时代青年应如何担当？",trap:"不能只说口号，要结合具体行动和岗位实际。",mem:"远大理想·时代责任·过硬本领·品德修为"},
+    ],
+    shenlun:"适用于'青年发展''时代担当'话题。引用：'习近平总书记寄语新时代青年要担当时代责任，为广大青年成长成才指明了前进方向。'",
+    words:[{w:"时代新人",d:"担当民族复兴大任的时代新人"},{w:"砥砺奋斗",d:"在困难中磨炼意志持续奋斗"}]},
+  {id:11,title:"习近平在庆祝改革开放48周年大会上发表重要讲话",cat:"改革开放讲话",time:"2026-12-18",source:"新华社",star:!1,
+    summary:"习近平总书记回顾改革开放48年光辉历程，强调改革开放是决定当代中国命运的关键一招，要坚定不移全面深化改革开放，以更大魄力在更高起点上推进改革开放，为全面建设社会主义现代化国家注入强大动力。",
+    sourceLink:"来源：新华社 2026-12-18",
+    exam:[
+      {point:"改革开放的历史地位",test:"常识判断：改革开放的关键意义？",trap:"注意区分'关键一招'与'必由之路'的不同表述。",mem:"关键一招·必由之路·强国之路"},
+    ],
+    shenlun:"适用于'改革开放'话题。引用：'习近平总书记强调改革开放是决定当代中国命运的关键一招，深刻揭示了改革与发展的内在逻辑。'",
+    words:[{w:"改革开放",d:"对内改革对外开放的基本国策"},{w:"关键一招",d:"决定命运的关键举措"}]},
+  {id:12,title:"习近平在主题教育总结大会上发表重要讲话",cat:"主题教育讲话",time:"2026-02-04",source:"新华社",star:!1,
+    summary:"习近平总书记强调主题教育要牢牢把握'学思想、强党性、重实践、建新功'的总要求，在以学铸魂、以学增智、以学正风、以学促干方面取得实实在在的成效，推动全党更加自觉地为全面建设社会主义现代化国家而奋斗。",
+    sourceLink:"来源：新华社 2026-02-04",
+    exam:[
+      {point:"主题教育的总要求",test:"常识判断：主题教育的总要求是什么？",trap:"四个要求需分别理解，不可混淆。",mem:"学思想·强党性·重实践·建新功"},
+    ],
+    shenlun:"适用于'党的建设'话题。引用：'主题教育总要求体现了知与行、理论与实践的辩证统一。'",
+    words:[{w:"主题教育",d:"党内集中性教育实践活动"},{w:"学思用贯通",d:"学习思考运用相互贯通"}]},
+];
+// ====== STATE ======
+var curTime='7day',curCat='all',isGrid=!1,curDetail=null,curPage=0,perPage=12;
+
+// ====== FILTER ======
+var favorites=JSON.parse(localStorage.getItem('sz_favs')||'[]');
+function getFiltered(){
+  var pool=newsData.slice();
+  if(curCat==='fav'){pool=pool.filter(function(x){return favorites.indexOf(x.id)!==-1});return pool}
+  var now=new Date('2026-06-20');
+  if(curTime==='today')pool=pool.filter(function(x){return x.time==='2026-06-20'});
+  else if(curTime==='3day')pool=pool.filter(function(x){return new Date(x.time)>=new Date('2026-06-18')});
+  else if(curTime==='7day')pool=pool.filter(function(x){return new Date(x.time)>=new Date('2026-06-14')});
+  if(curCat!=='all')pool=pool.filter(function(x){return x.cat===curCat});
+  return pool;
+}
+
+function filterTime(t,el){
+  curTime=t;curPage=0;
+  document.querySelectorAll('#timeTabs > div').forEach(function(b){b.classList.remove('tab-active-card');b.classList.add('bg-white','border-gray-200','text-gray-500')});
+  el.classList.add('tab-active-card');el.classList.remove('bg-white','border-gray-200','text-gray-500');
+  renderList();
+}
+
+function filterCat(c,el){
+  curCat=c;curPage=0;
+  document.querySelectorAll('#catTabs > div').forEach(function(b){b.classList.remove('tab-active-card');b.classList.add('bg-white','border-gray-200','text-gray-500')});
+  el.classList.add('tab-active-card');el.classList.remove('bg-white','border-gray-200','text-gray-500');
+  renderList();
+}
+
+function goPage(dir){curPage+=dir;renderList()}
+
+// ====== RENDER LIST ======
+function renderList(){
+  var pool=getFiltered();
+  document.getElementById('listCount').textContent='共 '+pool.length+' 条讲话';
+  var pages=Math.ceil(pool.length/perPage)||1;
+  if(curPage>=pages)curPage=pages-1;
+  if(curPage<0)curPage=0;
+  var start=curPage*perPage;
+  var pageItems=pool.slice(start,start+perPage);
+  document.getElementById('pageInfo').textContent=(curPage+1)+' / '+pages;
+  document.getElementById('btnPrev').disabled=curPage<=0;
+  document.getElementById('btnNext').disabled=curPage>=pages-1;
+  var html='';
+  pageItems.forEach(function(item){
+    html+='<div class="card-hover flex items-center justify-between px-5 py-4 border-b border-gray-50 last:border-0 cursor-pointer" onclick="openDetail('+item.id+')"><div class="flex items-center gap-3 flex-1 min-w-0"><div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1677ff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><span class="text-sm font-semibold truncate">'+item.title+'</span></div><span class="text-xs bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full whitespace-nowrap ml-3 font-medium">'+item.cat+'</span></div>';
+  });
+  document.getElementById('newsList').innerHTML=html||'<div class="text-center py-20 text-gray-400"><div class="text-4xl mb-4">📭</div><p class="text-sm">暂无匹配讲话</p></div>';
+}
+
+// ====== DETAIL ======
+function openDetail(id){
+  curDetail=newsData.find(function(x){return x.id===id});if(!curDetail)return;
+  document.getElementById('listPage').classList.add('hidden');
+  document.getElementById('detailPage').classList.remove('hidden');
+  document.getElementById('detailTitle').textContent=curDetail.title;
+  document.getElementById('detailSource').textContent=curDetail.source+' · '+curDetail.time;
+  document.getElementById('detailStar').textContent=curDetail.star?'★':'☆';
+  document.getElementById('detailCat').textContent=curDetail.cat;
+  document.getElementById('detailSummary').textContent=curDetail.summary;
+  document.getElementById('detailSourceLink').textContent=curDetail.sourceLink;
+  // Exam table
+  var rows='';
+  curDetail.exam.forEach(function(e){rows+='<tr class="border-b border-gray-50 hover:bg-blue-50/30 transition"><td class="px-6 py-5 font-semibold text-gray-800 text-base">'+e.point+'</td><td class="px-6 py-5 text-gray-600 text-base">'+e.test+'</td><td class="px-6 py-5 text-orange-600 text-base leading-relaxed">'+e.trap+'</td><td class="px-6 py-5 text-primary font-bold text-base">'+e.mem+'</td></tr>'});
+  document.getElementById('tabExamBody').innerHTML=rows;
+  // Shenlun
+  document.getElementById('tabShenlunContent').textContent=curDetail.shenlun;
+  // Words
+  var chips='';
+  curDetail.words.forEach(function(w){chips+='<span class="px-4 py-2.5 bg-white rounded-xl text-sm font-semibold shadow-sm border border-purple-100"><span class="text-primary">'+w.w+'</span><span class="text-gray-400 mx-2">|</span><span class="text-gray-600">'+w.d+'</span></span>'});
+  document.getElementById('tabWordsContent').innerHTML=chips;
+  // Reset tabs
+  switchDetailTab('exam',document.querySelector('#detailTabs button[data-dtab="exam"]'));
+  window.scrollTo(0,0);
+}
+
+function backToList(){
+  document.getElementById('listPage').classList.remove('hidden');
+  document.getElementById('detailPage').classList.add('hidden');
+  window.scrollTo(0,0);
+}
+
+function toggleStar(){
+  if(!curDetail)return;
+  curDetail.star=!curDetail.star;
+  var idx=favorites.indexOf(curDetail.id);
+  if(curDetail.star){if(idx===-1)favorites.push(curDetail.id)}else{if(idx!==-1)favorites.splice(idx,1)}
+  localStorage.setItem('sz_favs',JSON.stringify(favorites));
+  document.getElementById('detailStar').textContent=curDetail.star?'★':'☆';
+  if(curCat==='fav')renderList();
+}
+
+var tabColors={exam:'#1677ff',shenlun:'#16a34a',words:'#8b5cf6'};
+function switchDetailTab(tab,el){
+  document.querySelectorAll('#detailTabs button').forEach(function(b){b.classList.remove('tab-active','shadow-md');b.classList.add('bg-white','border-2','border-gray-200','text-gray-500');b.style.background='';b.style.color=''});
+  el.classList.add('tab-active','shadow-md');el.classList.remove('bg-white','border-2','border-gray-200','text-gray-500');
+  el.style.background=tabColors[tab];el.style.color='#fff';
+  document.getElementById('tabExam').classList.add('hidden');document.getElementById('tabShenlun').classList.add('hidden');document.getElementById('tabWords').classList.add('hidden');
+  if(tab==='exam')document.getElementById('tabExam').classList.remove('hidden');
+  else if(tab==='shenlun')document.getElementById('tabShenlun').classList.remove('hidden');
+  else document.getElementById('tabWords').classList.remove('hidden');
+}
+
+// ====== INIT ======
+renderList();
+</script></body></html>
